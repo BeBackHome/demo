@@ -1,0 +1,40 @@
+#logging
+logging:
+    level:
+        com.example.demo: DEBUG    INFO    ERROR
+    config: classpath:logback.xml
+
+
+# Configuration for Spring Framework
+# MVC it is just used for InternalResourceViewResolver
+#spring.view.prefix=
+#spring.view.suffix=
+#date-format
+spring:
+    jackson:
+        serialization:
+            write-dates-as-timestamps: false
+    messages:
+        basename: messages,ValidationMessages
+        encoding: UTF-8
+#spring.jackson.date-format: yyyyMMddHHmmss
+#spring.jackson.joda-date-time-format: yyyy-MM-dd HH: mm: ss
+#datasource
+#spring.jpa.hibernate.ddl-auto: create#-drop
+    jpa:
+        generate-ddl: false
+        database-platform: org.hibernate.dialect.MySQLDialect
+        show-sql: true
+        hibernate:
+          ddl-auto: update
+    datasource:
+        url: jdbc:mysql://localhost/demon?useUnicode=true&characterEncoding=utf-8&useSSL=false&zeroDateTimeBehavior=round
+        username: root
+        password: 123456
+server:
+  port: 2222
+
+common:
+  id:
+    dataCenterId: 0
+    workId: 0

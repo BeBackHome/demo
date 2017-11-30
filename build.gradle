@@ -1,0 +1,49 @@
+buildscript {
+	ext {
+		spring_boot_version = '1.5.8.RELEASE'
+		spring_swagger_version = '2.6.1'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+
+
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	providedRuntime
+}
+
+dependencies {
+	compile("io.springfox:springfox-swagger2:${spring_swagger_version}")
+	compile("io.springfox:springfox-swagger-ui:${spring_swagger_version}")
+	compile('org.springframework.boot:spring-boot-starter')
+	compile("org.springframework.boot:spring-boot-starter-web:${spring_boot_version}")
+	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	compile 'com.querydsl:querydsl-jpa'
+	compile 'com.querydsl:querydsl-apt'
+	//compile 'com.querydsl:querydsl-apt:4.1.4:jpa'
+	compile("mysql:mysql-connector-java")
+	compile "com.alibaba:druid:1.0.23"
+	compile "org.hibernate:hibernate-core:5.1.0.Final"
+	compile "org.hibernate:hibernate-entitymanager:5.1.0.Final"
+
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
